@@ -1,6 +1,9 @@
-import ExpenseList from "./components/ExpenseList";
+import React from "react";
+import ExpenseList from "./components/Expenses/ExpenseList";
+import NewExpense from "./components/NewExpense/NewExpense";
+import ExpensesFilter from "./components/Expenses/ExpensesFilter";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -23,9 +26,22 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
+  };
+
+  //  **** How JSX Looks Behind The Scenes ****
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Lets get started!"),
+  //   React.createElement(ExpenseList, { items: expenses })
+  // );
+
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <ExpenseList items={expenses} />
     </div>
   );
